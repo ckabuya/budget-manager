@@ -34,4 +34,17 @@ public class Budget {
     public List<Purchase> getPurchaseList() {
         return purchaseList;
     }
+
+    public List<Purchase> getPurchaseList(int type) {
+        List<Purchase> newList= new ArrayList<>();
+
+        for (Purchase e : purchaseList) {
+            //this category is present
+            if (e.getCategory().equals(Purchase.getCategory(type))) {
+                newList.add(e);//add
+            }
+        }
+        return newList;
+    }
+
 }
