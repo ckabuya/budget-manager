@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget_Manager.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget_Manager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Budget Manager/task/Budget_Manager.Budget_Manager-task.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Budget_Manager.Problems-Create_an_euphonious_word.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Budget_Manager.Problems-Create_an_euphonious_word.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Budget_Manager.Problems-Create_an_euphonious_word.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Budget_Manager.Problems-Create_an_euphonious_word.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Budget_Manager.Problems-Create_an_euphonious_word.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Create an euphonious word/Budget_Manager.Problems-Create_an_euphonious_word.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Double characters/Budget_Manager.Problems-Double_characters.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Double characters/Budget_Manager.Problems-Double_characters.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Double characters/Budget_Manager.Problems-Double_characters.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Double characters/Budget_Manager.Problems-Double_characters.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Double characters/Budget_Manager.Problems-Double_characters.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Double characters/Budget_Manager.Problems-Double_characters.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Palindrome/Budget_Manager.Problems-Palindrome.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Palindrome/Budget_Manager.Problems-Palindrome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Palindrome/Budget_Manager.Problems-Palindrome.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Palindrome/Budget_Manager.Problems-Palindrome.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Problems/Palindrome/Budget_Manager.Problems-Palindrome.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Problems/Palindrome/Budget_Manager.Problems-Palindrome.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.main.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.test.iml" filepath="$PROJECT_DIR$/.idea/modules/util/Budget_Manager.util.test.iml" />
+    </modules>
+  </component>
+</project>
