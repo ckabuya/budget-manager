@@ -1,13 +1,11 @@
 package budget;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     final static Scanner scanner = new Scanner(System.in);
     static double income = 0.0;
-    static StringBuilder purchasesList = new StringBuilder();
     static Budget mainBudget = new Budget();
 
     public static void main(String[] args) {
@@ -32,6 +30,12 @@ public class Main {
                 case 4:
                     balance();
                     break;
+                case 5:
+                    save();
+                    break;
+                case 6:
+                    load();
+                    break;
                 default:
                     startBudgetApp();
             }
@@ -45,14 +49,15 @@ public class Main {
                 "2) Add purchase\n" +
                 "3) Show list of purchases\n" +
                 "4) Balance\n" +
+                "5) Save\n" +
+                "6) Load\n" +
                 "0) Exit");
         int action = scanner.nextInt();
-        if (action < 0 || action > 5) {
-            throw new IllegalArgumentException("Invalid action: 0 - 5");
+        if (action < 0 || action > 7) {
+            throw new IllegalArgumentException("Invalid action: 0 - 7");
         }
         return action;
     }
-
     static int displayPurchaseMenu() {
         System.out.println("\nChoose the type of purchase\n" +
                 "1) Food\n" +
@@ -66,7 +71,6 @@ public class Main {
         }
         return action;
     }
-
     /**
      * Process when user wants to show list of purchases
      *
@@ -85,7 +89,6 @@ public class Main {
         }
         return action;
     }
-
     private static void processPurchase() {
 
         boolean isNotDone = false;
@@ -113,7 +116,6 @@ public class Main {
             }
         }
     }
-
     private static void processShowPurchaseList() {
         boolean isNotDone = false;
 
@@ -148,24 +150,20 @@ public class Main {
             }
         }
     }
-
     static void exit() {
         System.out.println("\nBye!");
     }
-
     static void addIncome() {
         System.out.println("\nEnter income:");
         mainBudget.addIncome(scanner.nextDouble());
         System.out.println("Income was added!");
         System.out.println();
     }
-
     static void balance() {
         System.out.printf("\nBalance : $%.2f", mainBudget.getBalance());
         System.out.println();
         // System.out.println();
     }
-
     static void showPurchaseList(int type) {
         List<Purchase> list = mainBudget.getPurchaseList();
         double total = 0;
@@ -190,7 +188,6 @@ public class Main {
         }
 
     }
-
     static void showPurchaseList() { //all
         List<Purchase> list = mainBudget.getPurchaseList();
         if (list.isEmpty()) {
@@ -209,7 +206,6 @@ public class Main {
             System.out.println();
         }
     }
-
     /**
      * Option 2 for
      */
@@ -230,5 +226,10 @@ public class Main {
         mainBudget.addIncome(-price);//return balance
         System.out.println("Purchase was added!");
     }
-
+    static void save(){
+        System.out.println("\nPurchases were saved!");
+    }
+    static void load(){
+        System.out.println("\nPurchases were loaded!");
+    }
 }

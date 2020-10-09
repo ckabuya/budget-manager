@@ -298,6 +298,178 @@ files:
         }
     }
   learner_created: false
+- name: src/budget/Budget.java
+  visible: true
+  text: |
+    package budget;
+
+    import java.util.ArrayList;
+    import java.util.List;
+
+    public class Budget {
+        private List<Purchase> purchaseList;
+        private double balance; //income
+
+        public Budget(List<Purchase> list) {
+            this.purchaseList = list;
+        }
+
+        public Budget() {
+            purchaseList = new ArrayList<>();
+        }
+
+        public void addIncome(double amount) {
+            this.balance += amount;
+        }
+
+        public double getBalance() {
+            return balance;
+        }
+
+        public void addPurchace(Purchase add) {
+            this.purchaseList.add(add);
+        }
+
+        public void addPurchace(String name, double price) {
+            this.purchaseList.add(new Purchase(price, name));
+        }
+
+        public List<Purchase> getPurchaseList() {
+            return purchaseList;
+        }
+
+        public List<Purchase> getPurchaseList(int type) {
+            List<Purchase> newList= new ArrayList<>();
+
+            for (Purchase e : purchaseList) {
+                //this category is present
+                if (e.getCategory().equals(Purchase.getCategory(type))) {
+                    newList.add(e);//add
+                }
+            }
+            return newList;
+        }
+
+    }
+  learner_created: true
+- name: src/budget/Purchase.java
+  visible: true
+  text: |
+    package budget;
+
+    import java.util.Objects;
+
+    public class Purchase {
+        private double price;
+        private String name;
+        private String category;
+
+        public Purchase(double price, String name) {
+            this.price = price;
+            this.name = name;
+        }
+        public Purchase(double price, String name, String category) {
+            this.price = price;
+            this.name = name;
+            this.category =category;
+        }
+        public Purchase(double price, String name, int type) {
+            this.price = price;
+            this.name = name;
+            this.category =setCategory(type);
+        }
+        public Purchase() {
+        }
+        public String setCategory(int type){
+            switch(type){
+                case 1:
+                    this.category = "Food";
+                    break;
+                case 2:
+                    this.category = "Clothes";
+                    break;
+                case 3:
+                    this.category = "Entertainment";
+                    break;
+                case 4:
+                this.category = "Other";
+                break;
+                default:
+                    this.category = "Other";
+
+            }
+            return category;
+        }
+        public static String getCategory(int type){
+            String cat;
+            switch(type){
+                case 1:
+                    cat = "Food";
+                    break;
+                case 2:
+                    cat = "Clothes";
+                    break;
+                case 3:
+                    cat = "Entertainment";
+                    break;
+                case 4:
+                    cat = "Other";
+                    break;
+                default:
+                    cat = "Other";
+
+            }
+            return cat;
+        }
+        public double getPrice() {
+            return price;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Purchase)) return false;
+            Purchase purchase = (Purchase) o;
+            return Double.compare(purchase.getPrice(), getPrice()) == 0 &&
+                    Objects.equals(getName(), purchase.getName()) &&
+                    Objects.equals(getCategory(), purchase.getCategory());
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(getPrice(), getName(), getCategory());
+        }
+
+        @Override
+        public String toString() {
+            return "Purchase{" +
+                    "price=" + price +
+                    ", name='" + name + '\'' +
+                    ", category='" + category + '\'' +
+                    '}';
+        }
+    }
+  learner_created: true
 feedback_link: https://hyperskill.org/projects/76/stages/424/implement
 status: Unchecked
 record: -1
