@@ -19,6 +19,10 @@ public class Budget {
         this.balance += amount;
     }
 
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
     public double getBalance() {
         return balance;
     }

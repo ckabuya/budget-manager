@@ -7,6 +7,7 @@ public class Main {
     final static Scanner scanner = new Scanner(System.in);
     static double income = 0.0;
     static Budget mainBudget = new Budget();
+    static FileProcessor fileProcessor = new FileProcessor();
 
     public static void main(String[] args) {
         //starting the app
@@ -64,7 +65,7 @@ public class Main {
                 "2) Clothes\n" +
                 "3) Entertainment\n" +
                 "4) Other\n" +
-                "5) Back");
+                "5) Back\n");
         int action = scanner.nextInt();
         if (action <= 0 || action > 6) {
             throw new IllegalArgumentException("Invalid action: 1 - 5");
@@ -227,9 +228,12 @@ public class Main {
         System.out.println("Purchase was added!");
     }
     static void save(){
-        System.out.println("\nPurchases were saved!");
+        //save the
+        fileProcessor.save(mainBudget);
+       // System.out.println("\nPurchases were saved!");
     }
     static void load(){
-        System.out.println("\nPurchases were loaded!");
+       // System.out.println("\nPurchases were loaded!");
+        fileProcessor.load(mainBudget);
     }
 }
