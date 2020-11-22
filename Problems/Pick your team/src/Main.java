@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 class SelectionContext {
@@ -5,11 +6,11 @@ class SelectionContext {
     private PersonSelectionAlgorithm algorithm;
 
     public void setAlgorithm(PersonSelectionAlgorithm algorithm) {
-        // write your code here
+        this.algorithm = algorithm;
     }
 
     public Person[] selectPersons(Person[] persons) {
-        // write your code here
+        return this.algorithm.select(persons);
     }
 }
 
@@ -19,27 +20,44 @@ interface PersonSelectionAlgorithm {
 }
 
 class TakePersonsWithStepAlgorithm implements PersonSelectionAlgorithm {
+    private int step;
 
     public TakePersonsWithStepAlgorithm(int step) {
-        // write your code here
+        this.step = step;
     }
 
     @Override
     public Person[] select(Person[] persons) {
-        // write your code here
+        if (persons == null || persons.length == 0) {
+            return persons;
+        }
+        if (step == 1) {
+            return persons;
+        }
+        Person[] person = new Person[(int) Math.ceil((double) persons.length / (double) step)];
+        int i = 0;
+        for (int j = 0; j < person.length; j++) {
+            person[j] = persons[i];
+            i += step;
+        }
+        return person;
     }
 }
 
 
 class TakeLastPersonsAlgorithm implements PersonSelectionAlgorithm {
+    private int count;
 
     public TakeLastPersonsAlgorithm(int count) {
-        // write your code here
+        this.count = count;
     }
 
     @Override
     public Person[] select(Person[] persons) {
-        // write your code here
+        if (count == 1) {
+            return new Person[]{persons[persons.length - 1]};
+        }
+        return Arrays.copyOfRange(persons, persons.length - count, persons.length);
     }
 }
 
