@@ -1,7 +1,6 @@
 package budget;
 
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     final static Scanner scanner = new Scanner(System.in);
@@ -37,6 +36,9 @@ public class Main {
                 case 6:
                     load();
                     break;
+                case 7:
+                    processAnalysis();
+                    break;
                 default:
                     startBudgetApp();
             }
@@ -52,6 +54,7 @@ public class Main {
                 "4) Balance\n" +
                 "5) Save\n" +
                 "6) Load\n" +
+                "7) Analyze (Sort)\n" +
                 "0) Exit");
         int action = scanner.nextInt();
         if (action < 0 || action > 7) {
@@ -89,6 +92,121 @@ public class Main {
             throw new IllegalArgumentException("Invalid action: 1 - 6");
         }
         return action;
+    }
+    static int displayAnalysisMenu() {
+        System.out.println("\nHow do you want to sort?\n" +
+                "1) Sort all purchases\n" +
+                "2) Sort by type\n" +
+                "3) Sort certain type\n" +
+                "4) Back\n");
+        int action = scanner.nextInt();
+        if (action <= 0 || action > 5) {
+            throw new IllegalArgumentException("Invalid action: 1 - 4");
+        }
+        return action;
+    }
+    static int displaySortCertainTypeMenu() {
+        System.out.println(
+                "Choose the type of purchase\n" +
+                        "1) Food\n" +
+                        "2) Clothes\n" +
+                        "3) Entertainment\n" +
+                        "4) Other");
+        int action = scanner.nextInt();
+        if (action <= 0 || action > 5) {
+            throw new IllegalArgumentException("Invalid action: 1 - 4");
+        }
+        return action;
+    }
+    private static void processAnalysis() {
+
+        boolean isNotDone = false;
+
+        while (!isNotDone) {
+            int action = displayAnalysisMenu();
+            switch (action) {
+                case 1: //food
+                    sortAllPurchases(0);
+                    break;
+                case 2: //Clothes
+                    sortByType(2);
+                    break;
+                case 3: //Entertainment
+                    SortByCertainType();
+                    break;
+                case 4: //back
+                    isNotDone = true;
+                    break;
+                default:
+                    isNotDone = true;
+            }
+        }
+    }
+    private static void sortAllPurchases(int type){
+        List<Purchase> list = mainBudget.getPurchaseList(); //all sorting
+        if(type != 0) {
+            list = mainBudget.getPurchaseList(type);
+
+            if(list.isEmpty()){
+                System.out.println("\nPurchase list is empty!");
+            }
+            else
+            {
+                Collections.sort(list,new PriceComparator());
+                showPurchaseList(type);
+            }
+
+
+        }
+        else {
+            if (list.isEmpty()) {
+                System.out.println("\nPurchase list is empty!");
+            } else {
+                Collections.sort(list, new PriceComparator());
+                showPurchaseList();
+            }
+        }
+    }
+    private static void SortByCertainType(){
+        int action = displaySortCertainTypeMenu();
+        switch (action) {
+                case 1: //food
+                    sortAllPurchases(1);
+                    break;
+                case 2: //Clothes
+                    sortAllPurchases(2);
+                    break;
+                case 3: //Entertainment
+                    sortAllPurchases(3);
+                    break;
+                case 4: //back
+                    sortAllPurchases(4);
+                    break;
+                default:
+                    sortAllPurchases(0);
+            }
+
+    }
+    private static void sortByType(int type){
+        List<PurchaseTypeSort> list = new ArrayList<>();
+        double totalSum = 0;
+        for(int i = 1; i <= 4; i++) {
+            List<Purchase> categery = mainBudget.getPurchaseList(i);
+            double total = 0;
+            for (Purchase e : categery) {
+                double pr = e.getPrice();
+                total += pr;
+            }
+            totalSum += total;
+            list.add(new PurchaseTypeSort(Purchase.getCategory(i),total));
+        }
+        Collections.sort(list);
+
+        for(PurchaseTypeSort typeToSum: list) {
+            System.out.println(typeToSum);
+        }
+        System.out.println("Total sum: $" +totalSum);
+        System.out.println();
     }
     private static void processPurchase() {
 
@@ -227,6 +345,7 @@ public class Main {
         mainBudget.addIncome(-price);//return balance
         System.out.println("Purchase was added!");
     }
+
     static void save(){
         //save the
         fileProcessor.save(mainBudget);
@@ -235,5 +354,14 @@ public class Main {
     static void load(){
        // System.out.println("\nPurchases were loaded!");
         fileProcessor.load(mainBudget);
+    }
+    static class PriceComparator implements Comparator<Purchase>
+    {
+        // Used for sorting in ascending order of
+        // roll number
+        public int compare(Purchase a, Purchase b)
+        {
+            return -Double.compare(a.getPrice() , b.getPrice());
+        }
     }
 }
